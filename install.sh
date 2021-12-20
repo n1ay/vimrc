@@ -2,7 +2,7 @@
 curr_dir="$(pwd)"
 [ -e ~/.vim/bundle/Vundle.vim ] || (echo 'Installing Vundle, the vim addon manager...'; git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim)
 
-cp .vimrc ~/.vimrc
+cp vimrc ~/.vimrc
 echo 'Installing vim plugins with Vundle...'
 vim +PluginInstall +qall
 

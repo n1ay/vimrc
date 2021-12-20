@@ -7,7 +7,7 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
+" let Vundle manage Vundle
 Plugin 'VundleVim/Vundle.vim'
 
 " The following are examples of different formats supported.
@@ -29,6 +29,23 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 "My plugins
 
+Plugin 'itchyny/lightline.vim'
+
+Plugin 'yegappan/mru'
+
+Plugin 'scrooloose/nerdtree'
+
+Plugin 'amix/open_file_under_cursor.vim'
+
+Plugin 'w0rp/ale'
+
+Plugin 'michaeljsmith/vim-indent-object'
+
+Plugin 'maxbrunsfeld/vim-yankstack'
+
+Plugin 'cocopon/iceberg.vim'
+
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -44,50 +61,9 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-Plugin 'itchyny/lightline.vim'
-
-Plugin 'yegappan/mru'
-
-Plugin 'scrooloose/nerdtree'
-
-Plugin 'amix/open_file_under_cursor.vim'
-
-Plugin 'w0rp/ale'
-
-Plugin 'michaeljsmith/vim-indent-object'
-
-Plugin 'altercation/vim-colors-solarized'
-
-Plugin 'Valloric/YouCompleteMe'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""Vim Config""""""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer:
-"       Amir Salihefendic — @amix3k
-"
-" Awesome_version:
-"       Get this config, nice color schemes and lots of plugins!
-"
-"       Install the awesome version from:
-"
-"           https://github.com/amix/vimrc
-"
-" Sections:
-"    -> General
-"    -> VIM user interface
-"    -> Colors and Fonts
-"    -> Files and backups
-"    -> Text, tab and indent related
-"    -> Visual mode related
-"    -> Moving around, tabs and buffers
-"    -> Status line
-"    -> Editing mappings
-"    -> vimgrep searching and cope displaying
-"    -> Spell checking
-"    -> Misc
-"    -> Helper functions
-"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -201,11 +177,6 @@ syntax enable
 if $COLORTERM == 'gnome-terminal'
     set t_Co=256
 endif
-
-try
-    colorscheme desert
-catch
-endtry
 
 set background=dark
 
@@ -488,16 +459,19 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
 "Plugin 'amix/open_file_under_cursor.vim'
-
+"gf to trigger
 
 "Plugin 'w0rp/ale'
 
 
 "Plugin 'michaeljsmith/vim-indent-object'
 
+"Plugin 'maxbrunsfeld/vim-yankstack'
+nmap <C-p> <Plug>yankstack_substitute_older_paste
+nmap <C-n> <Plug>yankstack_substitute_newer_paste
 
-"Plugin 'altercation/vim-colors-solarized'
-
+"Plugin 'cocopon/iceberg.vim'
+colorscheme iceberg
 
 "Plugin 'Valloric/YouCompleteMe'
 let g:ycm_key_list_stop_completion = ['<C-y>', '<CR>']
@@ -525,25 +499,6 @@ set guioptions-=r
 set guioptions-=R
 set guioptions-=l
 set guioptions-=L
-
-"Colorscheme 'vim-scripts/peaksea'
-"if ! has("gui_running")
-"    set t_Co=256
-"endif
-" feel free to choose :set background=light for a different style
-"set background=dark
-"colors peaksea
-":colorscheme peaksea
-
-
-"Colorscheme 'wesgibbs/vim-irblack'
-":colorscheme ir_black
-
-"Colorscheme 'altercation/vim-colors-solarized'
-let g:solarized_termcolors=256
-syntax enable
-set background=dark
-colorscheme solarized
 
 " list chars
 set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
