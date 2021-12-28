@@ -97,6 +97,9 @@ command JsonFormat :%!python -m json.tool
 " Fast quitting without saving (if there are no changes)
 nnoremap qq :quit<CR>
 
+" Disable search results highlighting (only for the recent search)
+nnoremap ff :nohlsearch<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
