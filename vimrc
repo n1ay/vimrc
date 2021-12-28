@@ -91,6 +91,11 @@ nmap <leader>w :w!<cr>
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
 
+" :JsonFormat formats json file
+command JsonFormat :%!python -m json.tool
+
+" Fast quitting without saving (if there are no changes)
+nnoremap qq :quit<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
