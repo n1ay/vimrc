@@ -94,8 +94,19 @@ command W w !sudo tee % > /dev/null
 " :JsonFormat formats json file
 command JsonFormat :%!python3 -c "import json, sys, collections; print(json.dumps(json.load(sys.stdin, object_pairs_hook=collections.OrderedDict), ensure_ascii=False, indent=4, sort_keys=True))"<CR>
 
-" Fast quitting without saving (if there are no changes)
-nnoremap qq :quit<CR>
+" Fast quitting without saving
+
+" Helper function: returns true if 'q' was pressed
+function! QuitIfQIsPressed()
+    echohl WarningMsg | echo "File was modified. Press 'q' to discard changes and exit anyway" | echohl None
+    let l:pressed_key = getchar()
+    if nr2char(l:pressed_key) == 'q'
+        :quit!
+    endif
+    return ''
+endfunction
+
+nnoremap <expr> <silent> qq &modified ? ":call QuitIfQIsPressed()<CR>" : ":quit<CR>"
 
 " Disable search results highlighting (only for the recent search)
 nnoremap ff :nohlsearch<CR>
