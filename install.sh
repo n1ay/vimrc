@@ -11,5 +11,6 @@ ycm_deps='build-essential cmake python3-dev'
 
 dpkg -l $ycm_deps || (echo "Please provide a password to install $ycm_deps"; sudo apt install -y $ycm_deps || (echo "Can't setup YCM without requested requirements"; exit 1))
 cd ~/.vim/bundle/YouCompleteMe
+git submodule update --init --recursive
 python3 ./install.py --clang-completer && cd "$curr_dir"
 
