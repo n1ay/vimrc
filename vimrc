@@ -92,7 +92,7 @@ nmap <leader>w :w!<cr>
 command W w !sudo tee % > /dev/null
 
 " :JsonFormat formats json file
-command JsonFormat :%!python -m json.tool
+command JsonFormat :%!python3 -c "import json, sys, collections; print(json.dumps(json.load(sys.stdin, object_pairs_hook=collections.OrderedDict), ensure_ascii=False, indent=4, sort_keys=True))"<CR>
 
 " Fast quitting without saving (if there are no changes)
 nnoremap qq :quit<CR>
